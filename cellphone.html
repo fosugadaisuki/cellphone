@@ -11,53 +11,75 @@
             display: block;
             margin: 0 auto;
         }
-        button{
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background-color: #ffc6db;
-            color: white;
-            font-size: 20px;
-            border: none;
-            cursor: pointer;
-            outline: none;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
-            position: fixed;
-            top: 22%;
-            right: 20px; /* 距离右边的距离 */
-            transform: translateY(-50%);
-        }
+        
         p{
             font-size: 25px;
             margin-left: 5%;
         }
+        #overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        #popup {
+            background-color: #E6C2BC;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+        }
+       #popup h2{
+        padding: 20px;
+        font-size: 15px;
+        color: #a16e72;
+       }
+       #popup button{
+        font-size: 12px;
+        padding: 10px;
+        border-radius: 10px;
+        background-color: #F0DFCE;
+        border: 3px solid #D5B6B1;
+        color: #A8777A;
+        font-weight: bold;
+       }
     </style>
     <script>
-        function toggleAudio() {
-            var audio = document.getElementById("myAudio");
-            if (audio.paused) {
-                audio.play();
-            } else {
-                audio.pause();
-            }
+        function start() {
+            var overlay = document.getElementById('overlay');
+            var comic = document.getElementById('comic');
+            var audio = document.getElementById('myAudio');
+
+            overlay.style.display = 'none'; 
+            comic.style.display = 'block'; 
+            audio.play(); 
         }
     </script>
 </head>
 <body>
+    <div id="overlay">
+        <div id="popup">
+            <h2>打開手機音量，<br>以享有更好的觀看體驗</h2>
+            <button onclick="start()">開始觀看</button>
+        </div>
+    </div>
     <audio id="myAudio">
         <source src="drop-to-me-11154.mp3" type="audio/mpeg">
     </audio>
-    <button onclick="toggleAudio()">▶</button>
+    
     <p>如果忘記手機放在哪...</p>
     <br>
+    <div id="comic">
     <img src="comics_cellphone/cellphone_1.jpg" alt="Comic Strip 1">
     <img src="comics_cellphone/cellphone_2.jpg" alt="Comic Strip 2">
     <img src="comics_cellphone/cellphone_3.jpg" alt="Comic Strip 3">
     <img src="comics_cellphone/cellphone_4.jpg" alt="Comic Strip 4">
     <img src="comics_cellphone/cellphone_5.jpg" alt="Comic Strip 5">
     <img src="comics_cellphone/cellphone_6.jpg" alt="Comic Strip 6">
+</div>
 </body>
 </html>
