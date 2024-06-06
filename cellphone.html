@@ -26,6 +26,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
+            opacity: 1; 
+            transition: opacity 0.5s; 
         }
         #popup {
             background-color: #E6C2BC;
@@ -47,21 +49,33 @@
         color: #A8777A;
         font-weight: bold;
        }
+       #overlay.hidden {
+            opacity: 0; 
+            pointer-events: none; 
+            transition: opacity 0.5s; /* 添加淡出过渡效果 */
+        }
     </style>
     <script>
-        function start() {
-            var overlay = document.getElementById('overlay');
+        function start() {            
             var comic = document.getElementById('comic');
-            var audio = document.getElementById('myAudio');
-
-            overlay.style.display = 'none'; 
+            var audio = document.getElementById('myAudio');            
             comic.style.display = 'block'; 
             audio.play(); 
+            hidePopup();
         }
+        function hidePopup() {
+            var overlay = document.getElementById('overlay');
+            overlay.classList.add('hidden'); 
+        }
+        
+        window.onload = function() {
+            var overlay = document.getElementById('overlay');
+            overlay.classList.remove('hidden');
+        };
     </script>
 </head>
 <body>
-    <div id="overlay">
+    <div id="overlay" class="hidden" onclick="hidePopup()">
         <div id="popup">
             <h2>打開裝置音量，<br>以享有更好的觀看體驗</h2>
             <button onclick="start()">開始觀看</button>
