@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>記憶力不好也是好事!</title>
     <style>
+        /*漫畫圖片*/
         img {
             max-width: 100%;
             height: auto;
@@ -12,10 +13,13 @@
             margin: 0 auto;
         }
         
+        /*如果忘記設鬧鐘*/
         p{
             font-size: 25px;
             margin-left: 5%;
         }
+
+        /*聲音提醒*/
         #overlay {
             position: fixed;
             top: 0;
@@ -29,30 +33,65 @@
             opacity: 1; 
             transition: opacity 0.5s; 
         }
+
+        /*聲音提醒背景顏色*/
         #popup {
-            background-color: #E6C2BC;
+            background-color: #C5B8BF;
             padding: 35px;
             border-radius: 10px;
             text-align: center;
         }
-       #popup h2{
-        padding: 15px;
-        font-size: 20px;
-        color: #a16e72;
-       }
-       #popup button{
-        font-size: 15px;
-        padding: 10px;
-        border-radius: 10px;
-        background-color: #F0DFCE;
-        border: 3px solid #D5B6B1;
-        color: #A8777A;
-        font-weight: bold;
-       }
-       #overlay.hidden {
+
+        /*聲音提醒字顏色*/
+        #popup h2{
+            padding: 15px;
+            font-size: 20px;
+            color: #5D7289;
+        }
+        #popup button{
+            font-size: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            background-color: #E8DFE2;
+            border: 3px solid #ac9ea5;
+            color: #766e9b;
+            font-weight: bold;
+        }
+        #overlay.hidden {
             opacity: 0; 
             pointer-events: none; 
-            transition: opacity 0.5s; /* 添加淡出过渡效果 */
+            transition: opacity 0.5s;
+        }
+        .center-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; 
+        }
+        .small-image {
+            width: 100%; 
+            height: auto; 
+        }
+
+        nav {
+            background-color: #333;
+            padding: 10px 0;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+            display: inline-block;
+        }
+        nav a:hover {
+            background-color: #575757;
+        }
+        .content {
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
         }
     </style>
     <script>
@@ -72,6 +111,13 @@
             var overlay = document.getElementById('overlay');
             overlay.classList.remove('hidden');
         };
+        function navigateTo(pageId) {
+        // Hide all content sections
+        document.querySelectorAll('.content').forEach(section => {
+            section.classList.add('hidden');
+        });
+        document.getElementById(pageId).classList.remove('hidden');
+    }
     </script>
 </head>
 <body>
@@ -88,15 +134,29 @@
         <source src="drop-to-me-11154.mp3" type="audio/mpeg">
     </audio>
     
-    <p>如果忘記手機放在哪...</p>
-    <br>
-    <div id="comic">
-    <img src="comics_cellphone/cellphone_1.jpg" alt="Comic Strip 1">
-    <img src="comics_cellphone/cellphone_2.jpg" alt="Comic Strip 2">
-    <img src="comics_cellphone/cellphone_3.jpg" alt="Comic Strip 3">
-    <img src="comics_cellphone/cellphone_4.jpg" alt="Comic Strip 4">
-    <img src="comics_cellphone/cellphone_5.jpg" alt="Comic Strip 5">
-    <img src="comics_cellphone/cellphone_6.jpg" alt="Comic Strip 6">
+    <div id="home" class="content">
+        <img src="comics_cellphone\ezgif.com-animated-gif-maker (1).gif" alt="Description of GIF" class="small-image" onclick="navigateTo('p1')">
+    </div>
+    <div id="p1" class="content hidden">
+        <img src="comics_cellphone\cellphone_1.jpg" alt="Comic Strip 1" class="small-image" onclick="navigateTo('p2')">
+    </div>
+    <div id="p2" class="content hidden">
+        <img src="comics_cellphone\cellphone_2.jpg" alt="Comic Strip 2" class="small-image" onclick="navigateTo('p3')">
+    </div>
+    <div id="p3" class="content hidden">
+        <img src="comics_cellphone\cellphone_3.jpg" alt="Comic Strip 3" class="small-image" onclick="navigateTo('p4')">
+    </div>
+    <div id="p4" class="content hidden">
+        <img src="comics_cellphone\cellphone_4.jpg" alt="Comic Strip 4" class="small-image" onclick="navigateTo('p5')">
+    </div>
+    <div id="p5" class="content hidden">
+        <img src="comics_cellphone\cellphone_5.jpg" alt="Comic Strip 5"
+        class="small-image" onclick="navigateTo('p6')">
+    </div>
+    <div id="p6" class="content hidden">
+        <img src="comics_cellphone\cellphone_6.jpg" alt="Comic Strip 6"
+        class="small-image" >
+    </div>
 </div>
 </body>
 </html>
