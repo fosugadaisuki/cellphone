@@ -1,5 +1,4 @@
-html
-Copy code
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -122,6 +121,10 @@ Copy code
                 section.classList.add('hidden');
             });
             document.getElementById(pageId).classList.remove('hidden');
+
+var audio = document.getElementById('myAudio');
+audio.pause();
+audio.currentTime = 0;
         }
     </script>
 </head>
