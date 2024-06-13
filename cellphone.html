@@ -95,13 +95,17 @@
         }
     </style>
     <script>
-        function start() {            
-            var comic = document.getElementById('comic');
-            var audio = document.getElementById('myAudio');            
-            comic.style.display = 'block'; 
-            audio.play(); 
-            hidePopup();
-        }
+
+function start() {
+    //var comic = document.getElementById('comic');
+    var audio = document.getElementById('myAudio');            
+    //comic.style.display = 'block'; 
+    audio.load(); 
+    /*audio.play().catch(error => {
+        console.log('播放失敗：', error);
+    }); */
+    hidePopup();
+}
         function hidePopup() {
             var overlay = document.getElementById('overlay');
             overlay.classList.add('hidden'); 
@@ -131,7 +135,7 @@
         </div>
     </div>
     <audio id="myAudio">
-        <source src="drop-to-me-11154.mp3" type="audio/mpeg">
+        <source src="sound/cellphone.mp3" type="audio/mpeg">
     </audio>
     
     <div id="home" class="content">
