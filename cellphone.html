@@ -1,3 +1,5 @@
+html
+Copy code
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +16,7 @@
         }
         
         /*如果忘記設鬧鐘*/
-        p{
+        p {
             font-size: 25px;
             margin-left: 5%;
         }
@@ -43,12 +45,12 @@
         }
 
         /*聲音提醒字顏色*/
-        #popup h2{
+        #popup h2 {
             padding: 15px;
             font-size: 20px;
             color: #5D7289;
         }
-        #popup button{
+        #popup button {
             font-size: 15px;
             padding: 10px;
             border-radius: 10px;
@@ -95,17 +97,15 @@
         }
     </style>
     <script>
+        function start() {
+            var audio = document.getElementById('myAudio');
+            audio.play().catch(error => {
+                console.log('播放失敗：', error);
+                alert('音頻播放失敗，請檢查音量或瀏覽器設定。');
+            }); 
+            hidePopup();
+        }
 
-function start() {
-    //var comic = document.getElementById('comic');
-    var audio = document.getElementById('myAudio');            
-    //comic.style.display = 'block'; 
-    audio.load(); 
-    /*audio.play().catch(error => {
-        console.log('播放失敗：', error);
-    }); */
-    hidePopup();
-}
         function hidePopup() {
             var overlay = document.getElementById('overlay');
             overlay.classList.add('hidden'); 
@@ -115,51 +115,50 @@ function start() {
             var overlay = document.getElementById('overlay');
             overlay.classList.remove('hidden');
         };
+
         function navigateTo(pageId) {
-        // Hide all content sections
-        document.querySelectorAll('.content').forEach(section => {
-            section.classList.add('hidden');
-        });
-        document.getElementById(pageId).classList.remove('hidden');
-    }
+            // Hide all content sections
+            document.querySelectorAll('.content').forEach(section => {
+                section.classList.add('hidden');
+            });
+            document.getElementById(pageId).classList.remove('hidden');
+        }
     </script>
 </head>
 <body>
-    <div id="overlay" class="hidden" onclick="hidePopup()">
+    <div id="overlay">
         <div id="popup">
             <h2>打開裝置音量，<br>以享有更好的觀看體驗</h2>
             <img src="comics_cellphone/3643733_low_sound_speaker_voice_volume_icon.png" alt="">
-            <br>
-            <br>
+            <br><br>
             <button onclick="start()">開始觀看</button>
         </div>
     </div>
     <audio id="myAudio">
         <source src="sound/cellphone.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
     </audio>
     
     <div id="home" class="content">
-        <img src="comics_cellphone\ezgif.com-animated-gif-maker (1).gif" alt="Description of GIF" class="small-image" onclick="navigateTo('p1')">
+        <img src="comics_cellphone/ezgif.com-animated-gif-maker (1).gif" alt="Description of GIF" class="small-image" onclick="navigateTo('p1')">
     </div>
     <div id="p1" class="content hidden">
-        <img src="comics_cellphone\cellphone_1.jpg" alt="Comic Strip 1" class="small-image" onclick="navigateTo('p2')">
+        <img src="comics_cellphone/cellphone_1.jpg" alt="Comic Strip 1" class="small-image" onclick="navigateTo('p2')">
     </div>
     <div id="p2" class="content hidden">
-        <img src="comics_cellphone\cellphone_2.jpg" alt="Comic Strip 2" class="small-image" onclick="navigateTo('p3')">
+        <img src="comics_cellphone/cellphone_2.jpg" alt="Comic Strip 2" class="small-image" onclick="navigateTo('p3')">
     </div>
     <div id="p3" class="content hidden">
-        <img src="comics_cellphone\cellphone_3.jpg" alt="Comic Strip 3" class="small-image" onclick="navigateTo('p4')">
+        <img src="comics_cellphone/cellphone_3.jpg" alt="Comic Strip 3" class="small-image" onclick="navigateTo('p4')">
     </div>
     <div id="p4" class="content hidden">
-        <img src="comics_cellphone\cellphone_4.jpg" alt="Comic Strip 4" class="small-image" onclick="navigateTo('p5')">
+        <img src="comics_cellphone/cellphone_4.jpg" alt="Comic Strip 4" class="small-image" onclick="navigateTo('p5')">
     </div>
     <div id="p5" class="content hidden">
-        <img src="comics_cellphone\cellphone_5.jpg" alt="Comic Strip 5"
-        class="small-image" onclick="navigateTo('p6')">
+        <img src="comics_cellphone/cellphone_5.jpg" alt="Comic Strip 5" class="small-image" onclick="navigateTo('p6')">
     </div>
     <div id="p6" class="content hidden">
-        <img src="comics_cellphone\cellphone_6.jpg" alt="Comic Strip 6"
-        class="small-image" >
+        <img src="comics_cellphone/cellphone_6.jpg" alt="Comic Strip 6" class="small-image">
     </div>
 </div>
 </body>
