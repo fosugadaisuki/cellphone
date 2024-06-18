@@ -148,7 +148,7 @@
         }
 
         function navigateToPreviousPage() {
-            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6','p7'];
             var currentIndex = pages.indexOf(currentPage);
             if (currentIndex > 0) {
                 var previousPage = pages[currentIndex - 1];
@@ -157,7 +157,7 @@
         }
 
         function navigateToNextPage() {
-            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6'];
+            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6','p7'];
             var currentIndex = pages.indexOf(currentPage);
             if (currentIndex < pages.length - 1) {
                 var nextPage = pages[currentIndex + 1];
@@ -196,7 +196,9 @@
     <audio id="p6Audio">
         <source src="" type="audio/mpeg">
     </audio>
-
+    <audio id="p7Audio">
+        <source src="" type="audio/mpeg">
+    </audio>
     <div id="top"></div>
     <div id="home" class="content">
         <img src="comics_cellphone/ezgif.com-animated-gif-maker (1).gif" alt="Description of GIF" class="small-image">
@@ -218,6 +220,9 @@
     </div>
     <div id="p6" class="content hidden">
         <img src="comics_cellphone/cellphone_6.jpg" alt="Comic Strip 6" class="small-image">
+    </div>
+    <div id="p7" class="content hidden">
+        <img src="comics_cellphone/S__52617265.jpg" alt="Comic Strip 7" class="small-image">
     </div>
 </body>
 </html>
