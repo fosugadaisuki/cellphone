@@ -80,10 +80,44 @@
         #top {
             padding-top: 30%;
         }
+        #hintPage {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: none;
+            justify-content: center;
+            align-items: center;
+        }
+        #hintContent {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(255, 255, 255, 0.3);
+            display: flex;
+        }
+        #hintContent div {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;
+            font-weight: bold;
+            color: #ffffff;
+        }
+        #hintLeft {
+            border-right: 2px solid #ffffff;
+        }
+        #hintRight {
+            border-left: 2px solid #ffffff;
+        }
     </style>
     <script>
-        var currentPage = 'home'; // 初始化当前页面
+        var currentPage = 'home'; // Initialize current page
         var navigationEnabled = false;
+        
         function start() {
             var audio = document.getElementById('homeAudio');
             audio.play();
@@ -112,31 +146,52 @@
         };
 
         function navigateTo(pageId, audioId) {
-            // 隐藏所有内容部分
+            // Hide all content sections
             document.querySelectorAll('.content').forEach(section => {
                 section.classList.add('hidden');
             });
 
-            // 停止所有音频
+            // Stop all audio
             stopAllAudio();
 
-            // 显示目标内容部分
+            // Show the target content section
             document.getElementById(pageId).classList.remove('hidden');
 
-            // 播放目标音频
+            // Play the target audio
             if (audioId) {
                 var audio = document.getElementById(audioId);
                 audio.play();
             }
-
-            // 更新当前页面
             currentPage = pageId;
+
+            // Show hint page if navigating to p1
+            if (pageId === 'p1') {
+                showHintPage();
+            }
+        }
+
+        function showHintPage() {
+            var hintPage = document.getElementById('hintPage');
+            hintPage.style.display = 'flex';
+        }
+
+        function hideHintPage() {
+            var hintPage = document.getElementById('hintPage');
+            hintPage.style.display = 'none';
         }
 
         function handlePageClick(event) {
             if (!navigationEnabled) return;
+            
             var windowWidth = window.innerWidth;
             var clickX = event.clientX;
+
+            // If hint page is visible, hide it first
+            var hintPage = document.getElementById('hintPage');
+            if (hintPage.style.display === 'flex') {
+                hideHintPage();
+                return;
+            }
 
             if (clickX < windowWidth / 2) {
                 // 点击左边，返回上一页
@@ -148,7 +203,7 @@
         }
 
         function navigateToPreviousPage() {
-            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6','p7'];
+            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5','p6','p7'];
             var currentIndex = pages.indexOf(currentPage);
             if (currentIndex > 0) {
                 var previousPage = pages[currentIndex - 1];
@@ -157,7 +212,7 @@
         }
 
         function navigateToNextPage() {
-            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5', 'p6','p7'];
+            var pages = ['home', 'p1', 'p2', 'p3', 'p4', 'p5','p6','p7'];
             var currentIndex = pages.indexOf(currentPage);
             if (currentIndex < pages.length - 1) {
                 var nextPage = pages[currentIndex + 1];
@@ -223,6 +278,12 @@
     </div>
     <div id="p7" class="content hidden">
         <img src="comics_cellphone/S__52617265.jpg" alt="Comic Strip 7" class="small-image">
+    </div>
+    <div id="hintPage">
+        <div id="hintContent">
+            <div id="hintLeft">上一頁</div>
+            <div id="hintRight">下一頁</div>
+        </div>
     </div>
 </body>
 </html>
